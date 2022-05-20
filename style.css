@@ -1,0 +1,16 @@
+body{
+    background-image: url(https://images2.alphacoders.com/939/939737.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  height: 100vh;
+}
+main{
+    
+   flex-grow: 1;
+}
+h1{
+    user-select: none;
+}
+.target{
+  width: 20vw;
+}
