@@ -29,7 +29,7 @@ function drawUpgrades() {
     template +=
       /*html*/
       `
-       <div class="col-md-6 px-5"  >
+       <div class="col-md-6 px-3"  >
     
     <div class="card" style="width: 18rem;" >
     <img class="img-fluid card-img-top"  src="${upgrade.image}" alt="">
@@ -44,8 +44,10 @@ function drawUpgrades() {
     console.log('disable button', upgrade);
   }
   document.getElementById("upgrades").innerHTML = template;
+  
   // update()
 }
+drawUpgrades()
 let autoUpgrades = {
   miniGun: {
     name: "MiniGun",
@@ -73,7 +75,7 @@ function drawAutoUpgrades() {
     template +=
       /*html*/
       ` 
-    <div class="col-md-6 px-5" >
+    <div class="col-md-6 px-3" >
     <div class="card" style="width: 18rem;">
     <img class="img-fluid card-img-top"   src="${autoUpgrade.image}" alt="">
     <div class="card-body">
@@ -86,29 +88,29 @@ function drawAutoUpgrades() {
     `;
   }
   
- 
+  
   document.getElementById("autoUpgrades").innerHTML = template;
-  // update()
+  
+ 
 }
-drawUpgrades();
-  drawAutoUpgrades();
-update()
+
 function buy(name) {
   console.log(name);
   let upgrade = upgrades[name];
-  
-
-  if (brain < upgrade.price) {
-    upgrade.qty += 0;
-  }
   if (upgrade.qty >= 0) {
     upgrade.qty += 1;
     brain -= upgrade.price;
     upgrade.price += 50;
   }
-
-  update();
+  drawUpgrades()
+  drawAutoUpgrades()
+  update()
 }
+  
+
+ 
+
+  
 
 function aBuy(name) {
   // updateAutoButtons()
@@ -119,44 +121,51 @@ function aBuy(name) {
     brain -= autoUpgrade.price;
     autoUpgrade.price += 100;
   }
- 
-  //   console.log(upgrade, "bought");
-
-  //   console.log();
-  update();
+  drawUpgrades()
+  drawAutoUpgrades()
+  update()
 }
+ 
+  
+ 
 
 function update() {
+  drawUpgrades();
+  drawAutoUpgrades();
   if (brain < 0) {
     brain = 0;
   }
-  
-    for (const price in upgrades) {
-      let upgrade = upgrades[price];
-      if (brain.toString() < upgrade.price) {
-        document.querySelector("#button").disabled = true;
-      }
+  for (const price in upgrades) {
+    let upgrade = upgrades[price];
+    if (brain < upgrade.price) {
+      document.getElementById("upButton").disabled = true;
     }
-    for (const price in autoUpgrades) {
-      let autoUpgrade = autoUpgrades[price];
+  }
+  for (const price in autoUpgrades) {
+    let autoUpgrade = autoUpgrades[price];
+    if (brain < autoUpgrade.price) {
+      document.getElementById("autoButton").disabled = true;
+    }
     
-    if (brain.toString() < autoUpgrade.price) {
-      document.querySelector("#button").disabled = true;
-    }
   }
-      
   
-   
-  }
-
+  
  
   document.getElementById("brainCount").innerHTML = brain.toString();
-  // drawUpgrades()
-
-
+}
 drawUpgrades();
 drawAutoUpgrades();
-update();
+update()
+
+  
+  
+   
+  
+   
+
+ 
+  // drawUpgrades()
+
 
 
 // function disButton() {
@@ -188,6 +197,7 @@ function shoot(name) {
   if (brain >= 0) {
     brain += 25;
   }
+  document.getElementById("brainCount").innerHTML = brain.toString();
   update();
 }
 
@@ -200,11 +210,11 @@ function autoShoot(name) {
     }
   }
   document.getElementById("brainCount").innerHTML = brain.toString();
- 
+  update();
 }
 
 let autoshootInterval = setInterval(autoShoot, 1000);
 drawUpgrades();
 drawAutoUpgrades();
-
 update()
+
