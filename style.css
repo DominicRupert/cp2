@@ -11,6 +11,25 @@ main{
 h1{
     user-select: none;
 }
+.btn{
+  border-radius: 1em;
+
+  
+}
+.btn:hover{
+  transform: scale(1.1);
+  transition: ease-in-out 250ms;
+
+}
 .target{
-  width: 20vw;
+  width: 50vw;
+  border-radius: 20%;
+  size: cover;
+  background-color: crimson;
+}
+.target:hover{
+  transform: scale(1.1);
+  transition: ease-in-out 250ms;
+  border-radius: 0%;
+  box-shadow: 2em 2em 20em  crimson;
 }
