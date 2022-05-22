@@ -36,18 +36,18 @@ function drawUpgrades() {
     <div class="card-body">
     <h3 class="card-title">${upgrade.name}: ${upgrade.qty}</h3>
     <h4>adds ${upgrade.brains} brains per click </h4>
-    <button class="btn btn-primary" type="button"  id="upButton" onclick="buy('${key}')" >buy <span class="mdi mdi-brain"></span>${upgrade.price}</button> 
+    <button class="btn btn-primary" type="button"  id="upButton${upgrade.name}" onclick="buy('${key}')" >buy <span class="mdi mdi-brain"></span>${upgrade.price}</button> 
     </div>
     </div>
     </div>
     `;
-    console.log('disable button', upgrade);
+    console.log("disable button", upgrade);
   }
-  document.getElementById("upgrades").innerHTML = template;
   
   // update()
+  document.getElementById("upgrades").innerHTML = template;
 }
-drawUpgrades()
+
 let autoUpgrades = {
   miniGun: {
     name: "MiniGun",
@@ -81,17 +81,13 @@ function drawAutoUpgrades() {
     <div class="card-body">
     <h3 class="card-title">${autoUpgrade.name}: ${autoUpgrade.qty}</h3>
     <h4>adds ${autoUpgrade.brains} brains per second </h4>
-    <button  type="button"  class="btn btn-primary" id="autoButton"  onclick="aBuy('${key}')" >buy <span class="mdi mdi-brain">${autoUpgrade.price}</span></button>
+    <button  type="button"  class="btn btn-primary" id="autoButton${autoUpgrade.name}"  onclick="aBuy('${key}')" >buy <span class="mdi mdi-brain">${autoUpgrade.price}</span></button>
     </div>
     </div>
     </div>
     `;
   }
-  
-  
   document.getElementById("autoUpgrades").innerHTML = template;
-  
- 
 }
 
 function buy(name) {
@@ -102,32 +98,22 @@ function buy(name) {
     brain -= upgrade.price;
     upgrade.price += 50;
   }
-  drawUpgrades()
-  drawAutoUpgrades()
-  update()
+  update();
 }
-  
-
  
 
-  
+
 
 function aBuy(name) {
-  // updateAutoButtons()
-
   let autoUpgrade = autoUpgrades[name];
   if (autoUpgrade.qty >= 0) {
     autoUpgrade.qty++;
     brain -= autoUpgrade.price;
     autoUpgrade.price += 100;
   }
-  drawUpgrades()
-  drawAutoUpgrades()
-  update()
+ 
+  update();
 }
- 
-  
- 
 
 function update() {
   drawUpgrades();
@@ -138,35 +124,24 @@ function update() {
   for (const price in upgrades) {
     let upgrade = upgrades[price];
     if (brain < upgrade.price) {
-      document.getElementById("upButton").disabled = true;
+      // @ts-ignore
+      document.getElementById(`upButton${upgrade.name}`).disabled = true;
     }
   }
   for (const price in autoUpgrades) {
     let autoUpgrade = autoUpgrades[price];
     if (brain < autoUpgrade.price) {
-      document.getElementById("autoButton").disabled = true;
+      // @ts-ignore
+      document.getElementById(`autoButton${autoUpgrade.name}`).disabled = true;
     }
-    
   }
-  
-  
- 
+
   document.getElementById("brainCount").innerHTML = brain.toString();
 }
-drawUpgrades();
-drawAutoUpgrades();
-update()
-
-  
-  
-   
-  
-   
-
- 
-  // drawUpgrades()
 
 
+
+// drawUpgrades()
 
 // function disButton() {
 //   for (const key in upgrades) {
@@ -193,6 +168,7 @@ function shoot(name) {
     brain += upgrade.qty * upgrade.brains;
     console.log(upgrade);
   }
+  // @ts-ignore
   let upgrade = upgrades[name];
   if (brain >= 0) {
     brain += 25;
@@ -201,6 +177,7 @@ function shoot(name) {
   update();
 }
 
+// @ts-ignore
 function autoShoot(name) {
   for (const key in autoUpgrades) {
     let autoUpgrade = autoUpgrades[key];
@@ -214,7 +191,5 @@ function autoShoot(name) {
 }
 
 let autoshootInterval = setInterval(autoShoot, 1000);
-drawUpgrades();
-drawAutoUpgrades();
-update()
 
+update();
