@@ -31,12 +31,12 @@ function drawUpgrades() {
       `
        <div class="col-lg-6 d-flex align-items-center" >
     
-    <div class="card " style="width: 15rem;" >
+    <div class="card " style="width: " >
     <img class="img-fluid card-img-top "style= ""   src="${upgrade.image}" alt="">
     <div class="card-body">
-    <h3 class="card-title">${upgrade.name}: ${upgrade.qty}</h3>
+    <h4 class="card-title">${upgrade.name}: ${upgrade.qty}</h4>
     <h5>adds ${upgrade.brains} brains per click </h5>
-    <button class="btn btn-primary" type="button"  id="upButton${upgrade.name}" onclick="buy('${key}')" >buy <span class="mdi mdi-brain"></span>${upgrade.price}</button> 
+    <button class="btn btn-primary pb-2" type="button"  id="upButton${upgrade.name}" onclick="buy('${key}')" >buy <span class="mdi mdi-brain"></span>${upgrade.price}</button> 
     </div>
     </div>
     </div>
@@ -77,10 +77,10 @@ function drawAutoUpgrades() {
       /*html*/
       ` 
     <div class="col-lg-6 px-3 d-flex align-items-center" >
-    <div class="card" style="width: 15rem;">
+    <div class="card" style="width: ">
     <img class="img-fluid card-img-top"   src="${autoUpgrade.image}" alt="">
     <div class="card-body">
-    <h3 class="card-title">${autoUpgrade.name}: ${autoUpgrade.qty}</h3>
+    <h4 class="card-title">${autoUpgrade.name}: ${autoUpgrade.qty}</h4>
     <h5>adds ${autoUpgrade.brains} brains per second </h5>
     <button  type="button"  class="btn btn-primary" id="autoButton${autoUpgrade.name}"  onclick="aBuy('${key}')" >buy <span class="mdi mdi-brain">${autoUpgrade.price}</span></button>
     </div>
@@ -112,13 +112,12 @@ function loadGame(){
  
 }
 function clearData(){
-  localStorage.clear()
   
-  loadGame()
+  localStorage.clear()
   saveGame()
+  loadGame()
   console.log("cleared", clearData);
 }
-
 function buy(name) {
   
   let upgrade = upgrades[name];
@@ -129,7 +128,6 @@ function buy(name) {
   }
   update();
 }
-
 function aBuy(name) {
   let autoUpgrade = autoUpgrades[name];
   if (autoUpgrade.qty >= 0) {
@@ -140,8 +138,6 @@ function aBuy(name) {
  
   update();
 }
-
-
 function update() {
   hunk()
   
@@ -168,10 +164,6 @@ function update() {
   document.getElementById("brainCount").innerHTML = brain.toString();
   
 }
-
-
-
-
 function shoot(name) {
   for (const key in upgrades) {
     let upgrade = upgrades[key];
@@ -181,13 +173,12 @@ function shoot(name) {
   // @ts-ignore
   let upgrade = upgrades[name];
   if (brain >= 0) {
-    brain += 25;
+    brain += 1;
   }
   document.getElementById("brainCount").innerHTML = brain.toString();
   update();
   saveGame()
 }
-
 // @ts-ignore
 function autoShoot(name) {
   
@@ -208,6 +199,6 @@ function hunk(){
 }
 console.log("cleared", clearData);
 
+// clearData()
 loadGame()
 update();
-clearData()
