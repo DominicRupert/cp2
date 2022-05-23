@@ -1,6 +1,5 @@
 //NOTE why wont button get disabled
 let brain = 0;
-
 let upgrades = {
   samEdge: {
     name: "Samurai Edge",
@@ -48,7 +47,6 @@ function drawUpgrades() {
   document.getElementById("upgrades").innerHTML = template;
   
 }
-
 let autoUpgrades = {
   miniGun: {
     name: "MiniGun",
@@ -66,7 +64,6 @@ let autoUpgrades = {
     qty: 0,
   },
 };
-
 function drawAutoUpgrades() {
   let template = "";
 
@@ -90,8 +87,6 @@ function drawAutoUpgrades() {
   }
   document.getElementById("autoUpgrades").innerHTML = template;
 }
-
-
 function saveGame(){
   window.localStorage.setItem("upgrades", JSON.stringify(upgrades))
   window.localStorage.setItem("autoUpgrades", JSON.stringify(autoUpgrades))
@@ -199,6 +194,6 @@ function hunk(){
 }
 console.log("cleared", clearData);
 
-// clearData()
+clearData()
 loadGame()
 update();
