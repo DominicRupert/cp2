@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
     <meta charset="utf-8" />
@@ -11,40 +11,56 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="bg-dark ">
+<body class="bg-black " >
 
-    <header class="container-fluid">
+    <header class="container">
         <div class="row ">
-            <div class="col-12 d-flex justify-content-center">
+            <div class="col-12 p-4 d-flex  justify-content-center" onclick="clearData()">
 
 
-                <h1 class="text-light">Brain Miner</h1>
+                <h1 class="text-light bg-black  title p-2 px-3" >resident evil 2: clicker boogaloo</h1>
             </div>
 
         </div>
 
     </header>
     <main>
-        <div class="container-fluid">
+        <div class="container">
 
             <div class="row justify-content-center text-center ">
+                
 
                 <img src="https://i.pinimg.com/originals/f3/89/e5/f389e505893ebceeacddac077f1365b5.gif"
-                    class="img-fluid target" onclick="shoot()" alt="">
+                    class="img-fluid target p-0" onclick="shoot()" alt="">
 
-                <h1 class="text-light p-5">Upgrades </h1>
+                <h1 class="text-light pt-3">Upgrades </h1>
 
             </div>
+
+
+
+
+
         </div>
-        <div class="container-fluid d-flex flex-row justify-content-evenly">
-            <div class="container-fluid d-flex justify-content-evenly">
-                <div class=" row flex-row  justify-content-between" id="upgrades">
+        <div class="container-fluid pb-4 ">
+
+            <div class="row justify-content-center count" >
+                <div class="col-4 d-flex  justify-content-center border rounded-5 border-3" style="background-color: black; ">
+                    <h1 class="p-1"style= "color: crimson" >brain count: <span id="brainCount" class="mdi mdi-brain"> 0</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="container d-flex flex-row ">
+            <div class="container d-flex flex-column  ">
+                <h1 class=" text-center">Click upgrades</h1>
+                <div class=" row flex-row  " id="upgrades">
 
 
                 </div>
             </div>
-            <div class="container-fluid d-flex justify-content-evenly">
-                <div class="row flex-row justify-content-around " id="autoUpgrades">
+            <div class="container d-flex    flex-column">
+                <h1 class=" text-center">auto upgrades</h1>
+                <div class="row flex-row  " id="autoUpgrades">
 
                 </div>
             </div>
@@ -52,15 +68,9 @@
 
 
 
-        <div class="container-fluid">
-
-            <div class="row justify-content-center p-5">
-                <div class="col-6 d-flex p-5 justify-content-center border rounded-5 border-3">
-                    <h1 class="text-light">brain count: <span id="brainCount" class="mdi mdi-brain"> 0</span></h1>
-                </div>
-            </div>
+        
         </div>
-        </div>
+        <audio id="hunk" src="/[BTCLOD.COM] Hunk theme _ Looming Dread (Resident Evil 2_Biohazard RE_2 OST)-256k.mp3"></audio>
     </main>
     <footer>
 

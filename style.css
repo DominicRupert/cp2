@@ -1,8 +1,10 @@
 body{
-    background-image: url(https://images2.alphacoders.com/939/939737.jpg);
+  background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/304240/37231a0a144c48c9d71b84508bbf93c3a70b6bc7.jpg);
     background-size: cover;
     background-repeat: no-repeat;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 main{
     
@@ -10,26 +12,51 @@ main{
 }
 h1{
     user-select: none;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
 }
 .btn{
   border-radius: 1em;
 
   
 }
+.count{
+  color: crimson
+}
+.card{
+  user-select: none;
+}
 .btn:hover{
   transform: scale(1.1);
   transition: ease-in-out 250ms;
-
+  border-radius: 1em;
 }
 .target{
-  width: 50vw;
+  width: 700px;
+  height: 400px;
+  object-fit: cover;
   border-radius: 20%;
-  size: cover;
-  background-color: crimson;
+  
+  /* background-color: crimson; */
 }
 .target:hover{
   transform: scale(1.1);
   transition: ease-in-out 250ms;
   border-radius: 0%;
   box-shadow: 2em 2em 20em  crimson;
+  border-radius: 1em;
+  cursor: crosshair;
+}
+.title{
+  border-radius: 1em;
+  
+}
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
